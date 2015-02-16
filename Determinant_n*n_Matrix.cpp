@@ -46,8 +46,7 @@ int determinant (int **array, int dim, int alongRowi){
 		int det=0;
 		for (int j=0;j<n;j++){
 			int **minorArr=minor(array,dim,alongRowi,j);//for each column j, first calculates the minor matrix by deleting the "alongRowi" row and "j" column
-			det=det+pow(-1,j)*array[alongRowi][j]*determinant(minorArr,dim-1,alongRowi);//determinant for matrix "array" with size n is weighted sum of
-			//the determinants of n sub-matrices of minorArr, each of size (n−1) × (n−1) 
+			det=det+pow(-1,j)*array[alongRowi][j]*determinant(minorArr,dim-1,alongRowi);//determinant for matrix "array" with size n is weighted sum of the determinants of n sub-matrices of minorArr, each of size (n−1) × (n−1) 
 			freeMinor(minorArr,dim-1);// here make free the dynamic memory
 		}			
 		return det;	
